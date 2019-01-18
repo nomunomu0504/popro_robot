@@ -4,8 +4,14 @@
 class Motor {
   public:
     Motor();
-    write();
+    void write(int Lp, int Rp);
+    void setBrakeMode(bool mode){
+      brakeMode = mode;
+    }
+    
   private:
+    //true : HighSide false : LowSide
+    bool brakeMode;
 };
 
 #endif
