@@ -9,17 +9,17 @@
 #define ST_LED0 A5
 #define ST_LED0 A4
 
-#define MPU_INT D7
+#define MPU_INT 7
 
-#define MD0_PWMF D13
-#define MD0_PWMR D5
+#define MD0_PWMF 13
+#define MD0_PWMR 5
 
-#define MD1_PWMF D6
-#define MD1_PWMR D11
+#define MD1_PWMF 6
+#define MD1_PWMR 11
 
-#define SERVO0 D9
-#define SERVO1 D10
+#define SERVO0 9
+#define SERVO1 10
 
-#define BLE_MLDP D4
+#define CMD_MLDP 4
 
 #endif
