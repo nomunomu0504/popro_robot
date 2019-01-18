@@ -16,7 +16,7 @@ void BLE::getData() {
       p = 0;
       BLE::splitMessage(str);
       for (int i = 0; i < 256; i++) str[i] = 0;
-
+      
       if (Receive != NULL)
         BLE::Receive();
     }
@@ -37,8 +37,10 @@ void BLE::splitMessage(char str[]) {
   char c[10] = "\0";
   char h[10] = "\0";
   char m[200] = "\0";
-  for (; str[j] != ','; j++) {
-    c[j] = str[j];
+  for(; !(str[j] == 'W' && str[j + 1] == 'V'); j++);
+  tmp = j;
+  for (j--; str[j] != ','; j++) {
+    c[j - tmp] = str[j];
   }
   c[j++] = '\0';
   tmp = j;
