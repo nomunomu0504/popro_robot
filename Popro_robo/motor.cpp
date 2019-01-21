@@ -31,7 +31,7 @@ void Motor::write(int Lp, int Rp) {
     analogWrite(MD0_PWMR, 0);
   }
 
-  if (Lp > 0) {
+  if (Rp > 0) {
     if (brakeMode) {
       analogWrite(MD1_PWMF, 255);
       analogWrite(MD1_PWMR, map(constrain(Rp, 0, 255), 0, 255, 255, 0));
@@ -39,7 +39,7 @@ void Motor::write(int Lp, int Rp) {
       analogWrite(MD1_PWMF, constrain(Rp, 0, 255));
       analogWrite(MD1_PWMR, 0);
     }
-  } else if (Lp < 0) {
+  } else if (Rp < 0) {
     if (brakeMode) {
       analogWrite(MD1_PWMF, map(constrain(-Rp, 0, 255), 0, 255, 255, 0));
       analogWrite(MD1_PWMR, 255);
