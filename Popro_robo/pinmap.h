@@ -7,7 +7,7 @@
 #define GPIO3 A0
 
 #define ST_LED0 A5
-#define ST_LED0 A4
+#define ST_LED1 A4
 
 #define MPU_INT 7
 
