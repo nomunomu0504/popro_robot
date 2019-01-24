@@ -4,11 +4,12 @@
 BLE ble;
 
 void Receive(){
+  //Read WV Message
   Serial.println(ble.mes);
 }
 
 void setup() {
-  ble.attachReceiveComplete();
+  ble.attachReceiveComplete(Receive);
 }
 
 void loop() {
