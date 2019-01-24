@@ -6,6 +6,7 @@ class BLE {
     BLE();
     void attachReceiveComplete(void (*func)());
     void getData();
+    void setData(char uuid[], char str[]);
     char cmd[10];
     char handle[10];
     char mes[200];
