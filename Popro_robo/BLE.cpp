@@ -27,6 +27,16 @@ void BLE::getData() {
   }
 }
 
+void BLE::setData(char uuid[], char str[]){
+  Serial1.print("SUW,");
+  Serial1.print(uuid);
+  Serial1.print(",");
+  for(int i = 0; str[i] != '\0'; i++){
+    Serial1.print((byte)str[i], HEX);
+  }
+  Serial1.println();
+}
+
 void BLE::attachReceiveComplete(void (*func)()) {
   BLE::Receive = func;
 }
