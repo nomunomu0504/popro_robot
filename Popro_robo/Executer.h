@@ -13,6 +13,7 @@ public:
 
 private:
   bool isControl(char cmd);
+  char code[100];
 };
 
 #endif
