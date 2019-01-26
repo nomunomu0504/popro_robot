@@ -6,6 +6,6 @@ Operation::Operation(){
     
 }
 
-void Operation::Run(char cmd){
+void Operation::Run(Behavior cmd){
     
 }
