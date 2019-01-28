@@ -3,10 +3,11 @@
 
 #include "Motor.h"
 
-enum Behavior {
-  Forward   = 'F',
-  Back      = 'B',
-  LeftTurn  = 'L'
+enum Behavior
+{
+  Forward = 'F',
+  Back = 'B',
+  LeftTurn = 'L'
 };
 
 class Operation
@@ -16,7 +17,7 @@ public:
   void Run(Behavior cmd);
 
 private:
-Motor motor;
+  Motor motor;
 };
 
 #endif

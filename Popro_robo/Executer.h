@@ -3,7 +3,8 @@
 
 #include "Motor.h"
 
-enum Control {
+enum Control
+{
   LOOP = 'W'
 };
 
