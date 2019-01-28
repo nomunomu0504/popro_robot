@@ -16,7 +16,6 @@ void Receive()
 
 void setup()
 {
-  Serial.begin(115200);
   pinMode(ST_LED0, OUTPUT);
   pinMode(ST_LED1, OUTPUT);
   ble.attachReceiveComplete(Receive);
