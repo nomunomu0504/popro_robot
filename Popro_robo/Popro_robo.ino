@@ -17,8 +17,10 @@ void Receive()
 void setup()
 {
   pinMode(ST_LED0, OUTPUT);
+  pinMode(ST_LED1, OUTPUT);
   ble.attachReceiveComplete(Receive);
   GyroSensorInit();
+  digitalWrite(ST_LED0, HIGH)
 }
 
 void loop()
