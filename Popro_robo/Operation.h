@@ -1,6 +1,8 @@
 #ifndef OPERATION_H
 #define OPERATION_H
 
+#include "Motor.h"
+
 enum Behavior {
   Forward   = 'F',
   Back      = 'B',
@@ -10,10 +12,11 @@ enum Behavior {
 class Operation
 {
 public:
-  Operation();
+  Operation(Motor *motor);
   void Run(Behavior cmd);
 
 private:
+Motor motor;
 };
 
 #endif

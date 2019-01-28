@@ -1,9 +1,10 @@
 #include "Arduino.h"
 #include "pinmap.h"
+#include "Motor.h"
 #include "Operation.h"
 #include "Executer.h"
 
-Executer::Executer(char code_[])
+Executer::Executer(char code_[], Motor *motor_) : motor(motor_)
 {
     strcpy(code, code_);
 }
@@ -26,7 +27,7 @@ void Executer::Run()
         }
         else
         {
-            Operation op;
+            Operation op(motor);
             op.Run(code[i]);
         }
     }

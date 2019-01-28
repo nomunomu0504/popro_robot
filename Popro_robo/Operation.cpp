@@ -2,7 +2,7 @@
 #include "pinmap.h"
 #include "Operation.h"
 
-Operation::Operation()
+Operation::Operation(Motor motor_) : motor(motor_)
 {
 }
 
