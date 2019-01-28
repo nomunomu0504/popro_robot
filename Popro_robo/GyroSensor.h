@@ -33,10 +33,13 @@ void GyroSensorInit()
     mpu.initialize();
     pinMode(MPU_INT, INPUT);
     uint8_t devStatus = mpu.dmpInitialize();
-    mpu.setXGyroOffset(220);
-    mpu.setYGyroOffset(76);
-    mpu.setZGyroOffset(-85);
-    mpu.setZAccelOffset(1788);
+    //[-2307,-2306] --> [-5,11]	[1201,1201] --> [0,1]	[2109,2110] --> [16377,16393]	[13,14] --> [-1,3]	[19,20] --> [0,2]	[21,22] --> [-2,1]
+    mpu.setXAccelOffset(-2307);
+    mpu.setYAccelOffset(1201);
+    mpu.setZAccelOffset(2110);
+    mpu.setXGyroOffset(14);
+    mpu.setYGyroOffset(19);
+    mpu.setZGyroOffset(22);
     if (devStatus == 0)
     {
         mpu.setDMPEnabled(true);
@@ -47,11 +50,11 @@ void GyroSensorInit()
     }
 }
 
-void GyroSensorLoop()
+void GyroSensorLoop(void (*loopFunc)())
 {
     while (!mpuInterrupt && fifoCount < packetSize)
     {
-        
+        loopFunc();   
     }
     mpuInterrupt = false;
     mpuIntStatus = mpu.getIntStatus();
