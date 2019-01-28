@@ -6,7 +6,13 @@
 
 Executer::Executer(char code_[], Motor *motor_) : motor(motor_)
 {
-    strcpy(code, code_);
+    int i;
+    for (i = 0; code_[i] != '\0'; i += 2)
+    {
+        char hex[3] = {code_[i], code_[i + 1], '\0'};
+        code[i / 2] = strtol(hex, NULL, 16);
+    }
+    code[i / 2] = '\0';
 }
 
 void Executer::Run()
