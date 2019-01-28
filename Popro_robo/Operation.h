@@ -17,7 +17,7 @@ public:
   void Run(Behavior cmd);
 
 private:
-  Motor motor;
+  Motor *motor;
 };
 
 #endif
