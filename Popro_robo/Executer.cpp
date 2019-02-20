@@ -1,6 +1,8 @@
 #include "Arduino.h"
 #include "pinmap.h"
 #include "Motor.h"
+#include "MPU6050_DMP6.h"
+#include "MPUData.h"
 #include "Operation.h"
 #include "Executer.h"
 
@@ -15,7 +17,7 @@ Executer::Executer(char code_[], Motor *motor_) : motor(motor_)
     code[i / 2] = '\0';
 }
 
-void Executer::Run()
+void Executer::Run(MPU6050 *mpu, MPUData *mpudata)
 {
     for (int i = 0; code[i] != '\0'; i++)
     {
@@ -33,7 +35,7 @@ void Executer::Run()
         }
         else
         {
-            Operation op(motor);
+            Operation op(motor, mpu, mpudata);
             op.Run(code[i]);
         }
     }

@@ -2,6 +2,8 @@
 #define EXECUTER_H
 
 #include "Motor.h"
+#include "MPU6050_DMP6.h"
+#include "MPUData.h"
 
 enum Control
 {
@@ -12,7 +14,7 @@ class Executer
 {
 public:
   Executer(char code[], Motor *motor);
-  void Run();
+  void Run(MPU6050 *mpu, MPUData *mpudata);
 
 private:
   bool isControl(char cmd);
