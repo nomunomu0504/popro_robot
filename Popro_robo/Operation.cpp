@@ -33,10 +33,13 @@ void Operation::Run(Behavior cmd)
         motor->write(0, 0);
         break;
     case LeftTurn:
-        while (fabs(mpudata->ypr[0] - ypr[0]) < 1.55)
+        int i = 0;
+        while (fabs(mpudata->ypr[0] - ypr[0]) < 1.56)
         {
             Gyro();
-            motor->write(-200, 200);
+            i += (1.57 - fabs(mpudata->ypr[0] - ypr[0])) * 0.6;
+            int power = (1.7 - fabs(mpudata->ypr[0] - ypr[0])) * 100 + i;
+            motor->write(-power, power);
         }
         motor->write(0, 0);
         break;
