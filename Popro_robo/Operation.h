@@ -17,13 +17,13 @@ class Operation
 public:
   Operation(Motor *motor, MPU6050 *mpu_, MPUData *mpudata_);
   void Run(Behavior cmd);
+  void Gyro();
+  float ypr[3];
 
 private:
   Motor *motor;
   MPU6050 *mpu;
-  MPUData *mpudata;
-  void Gyro();
-  float ypr[3];
+  MPUData *mpudata;  
 };
 
 #endif

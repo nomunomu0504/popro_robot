@@ -14,6 +14,7 @@ class MPUData
     uint16_t fifoCount;
     uint8_t fifoBuffer[64];
     volatile bool mpuInterrupt;
+    float ypr[3];
 };
 
 #endif

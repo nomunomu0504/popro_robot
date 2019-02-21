@@ -6,6 +6,16 @@
 
 Operation::Operation(Motor *motor_, MPU6050 *mpu_, MPUData *mpudata_) : motor(motor_), mpu(mpu_), mpudata(mpudata_)
 {
+    float y;
+    do
+    {
+        y = ypr[0];
+        for (int i = 0; i < 10; i++)
+        {
+            Gyro();
+        }
+    } while (fabs(y - ypr[0]) > 0.005);
+    memcpy(mpudata->ypr, ypr, sizeof(ypr));
 }
 
 void Operation::Run(Behavior cmd)
@@ -23,12 +33,12 @@ void Operation::Run(Behavior cmd)
         motor->write(0, 0);
         break;
     case LeftTurn:
-        Gyro();
-        float y = ypr[0];
-        while(ypr[0] - y < 1.57){
+        while (fabs(mpudata->ypr[0] - ypr[0]) < 1.55)
+        {
             Gyro();
-            Serial.println(ypr[0]);
+            motor->write(-200, 200);
         }
+        motor->write(0, 0);
         break;
 
     default:
@@ -36,13 +46,13 @@ void Operation::Run(Behavior cmd)
     }
 }
 
-void Operation::Gyro(){
+void Operation::Gyro()
+{
     Quaternion q;
     VectorFloat gravity;
 
     while (!mpudata->mpuInterrupt && mpudata->fifoCount < mpudata->packetSize)
     {
-
     }
     mpudata->mpuInterrupt = false;
     mpudata->mpuIntStatus = mpu->getIntStatus();
