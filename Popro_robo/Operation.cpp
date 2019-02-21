@@ -20,16 +20,25 @@ Operation::Operation(Motor *motor_, MPU6050 *mpu_, MPUData *mpudata_) : motor(mo
 
 void Operation::Run(Behavior cmd)
 {
+    long start = millis();
     switch (cmd)
     {
     case Forward:
-        motor->write(200, 200);
-        delay(2000);
+        while(millis() - start < 4000){
+            Gyro();
+            int diff = (mpudata->ypr[0] - ypr[0]) * 100;
+            Serial.println(diff);
+            motor->write(150 + diff, 150 - diff);
+        }
         motor->write(0, 0);
         break;
     case Back:
-        motor->write(-200, -200);
-        delay(2000);
+        while(millis() - start < 4000){
+            Gyro();
+            int diff = (mpudata->ypr[0] - ypr[0]) * 100;
+            Serial.println(diff);
+            motor->write(-150 + diff, -150 - diff);
+        }
         motor->write(0, 0);
         break;
     case LeftTurn:
