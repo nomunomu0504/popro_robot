@@ -27,7 +27,6 @@ void Operation::Run(Behavior cmd)
         while(millis() - start < 4000){
             Gyro();
             int diff = (mpudata->ypr[0] - ypr[0]) * 100;
-            Serial.println(diff);
             motor->write(150 + diff, 150 - diff);
         }
         motor->write(0, 0);
@@ -36,7 +35,6 @@ void Operation::Run(Behavior cmd)
         while(millis() - start < 4000){
             Gyro();
             int diff = (mpudata->ypr[0] - ypr[0]) * 100;
-            Serial.println(diff);
             motor->write(-150 + diff, -150 - diff);
         }
         motor->write(0, 0);
